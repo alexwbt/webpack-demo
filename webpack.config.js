@@ -15,7 +15,7 @@ module.exports = ({ production }) => {
             main: "./src/index.js"
         },
         output: {
-            filename: "[name].[contenthash].js",
+            filename: `[name]${production ? ".[contenthash]" : ""}.js`,
             path: path.resolve(__dirname, "build"),
             clean: true
         },
@@ -24,7 +24,7 @@ module.exports = ({ production }) => {
                 template: "./public/index.html"
             }),
             new MiniCssExtractPlugin({
-                filename: "[name].[contenthash].css"
+                filename: `[name]${production ? ".[contenthash]" : ""}.css`
             })
         ],
         module: {
@@ -35,8 +35,8 @@ module.exports = ({ production }) => {
                     use: ["babel-loader"]
                 },
                 {
-                    test: /\.(s?css)$/,
-                    use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+                    test: /\.(css|scss|sass)$/,
+                    use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader", "sass-loader"]
                 },
                 {
                     test: /\.html$/,
