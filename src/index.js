@@ -1,8 +1,32 @@
-import "./styles/main.scss"
+import "./index.scss"
+import { render } from 'react-dom';
+import styled from 'styled-components';
+import WebpackLogo from './imgs/webpack-logo.png';
 
-console.log(Array(10).fill(0).map((_, i) => i));
+const Title = styled.span`
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    color: white;
+`;
 
-console.log({
-    ...console,
-    test: 1
-});
+const Container = styled.div`
+    background-color: skyblue;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+`;
+
+const Image = styled.img`
+    margin: 0 auto;
+    width: 200px;
+`;
+
+const App = () => <Container>
+    <Image src={WebpackLogo} />
+    <Title>Hello world</Title>
+</Container>;
+
+render(<App />, document.getElementById('root'));
