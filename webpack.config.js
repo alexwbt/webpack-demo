@@ -17,6 +17,7 @@ module.exports = ({ production }) => {
         output: {
             filename: `[name]${production ? ".[contenthash]" : ""}.js`,
             path: path.resolve(__dirname, "build"),
+            assetModuleFilename: "assets/[hash][ext][query]",
             clean: true
         },
         plugins: [

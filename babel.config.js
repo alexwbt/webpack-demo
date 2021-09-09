@@ -11,8 +11,6 @@ module.exports = {
         [
             "babel-plugin-styled-components",
             {
-                // minify: true,
-                // transpileTemplateLiterals: true,
                 displayName: false
             }
         ]
